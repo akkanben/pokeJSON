@@ -103,6 +103,10 @@ public class Main {
 		CommandLine commandLine = null;
 		try {
 			commandLine = parser.parse(options, args);
+			if (commandLine.hasOption("help")) {
+				helpFormatter.printHelp("PokeJSON [OPTIONS] [NAME]", options);
+				System.exit(0);
+			}
 			if (commandLine.getArgs().length != 1) {
 				throw new ParseException("Missing or multiple [NAME] argument(s).");
 			}
