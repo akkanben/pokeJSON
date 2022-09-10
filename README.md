@@ -36,7 +36,7 @@ user@computer:~/pokeJSON/bin$ ./pokeJSON pikachu
 
 ## Updates
 
-- Version 0.01
+- Version 0.0.1
   - Adds basic functionality for looking up pokemon.
   - Uses the default ability url to fetch the actual ability description in English.
   - Allows the user to skip writing to disk via the --no-output option.
