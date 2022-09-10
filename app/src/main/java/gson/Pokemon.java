@@ -2,8 +2,13 @@ package gson;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import gson.Ability;
 import gson.pokeapi.PokeAPIAbility;
+import gson.pokeapi.PokeAPIAbilityDetail;
+import gson.pokeapi.PokeAPIEffectEntry;
 import gson.pokeapi.PokeAPIPokemon;
 
 public class Pokemon {
@@ -27,11 +32,24 @@ public class Pokemon {
 		abilities = new ArrayList<>();
 		for (PokeAPIAbility apiAblity : apiPokemon.getAbilities()) {
 			String name = apiAblity.getAbility().getName();
-			String description = apiAblity.getAbility().getUrl();
-			System.out.println(name + " " + description);
+			String description = convertAbilityURLToDescription(apiAblity.getAbility().getUrl());
 			Ability ability = new Ability(name, description);
 			abilities.add(ability);
 		}
+	}
+
+	private String convertAbilityURLToDescription(String url) {
+		String apiLine = Main.getApiLine(url);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		PokeAPIAbilityDetail abilityDetail = gson.fromJson(apiLine, PokeAPIAbilityDetail.class);
+		String description = "none";
+		for (PokeAPIEffectEntry entry : abilityDetail.getEffectEntries()) {
+			if (entry.getLanguage().getName().equals("en")) {
+				description = entry.getEffect();
+				break;
+			}
+		}
+		return description;
 	}
 
 	public void addAbility(Ability ability) {

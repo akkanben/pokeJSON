@@ -27,19 +27,21 @@ public class Main {
 		CommandLine commandLine = getParsedCommandLine(options, args);
 
 		// HTTP request
-		String apiResponseString = getApiLine(commandLine);
+		String pokemonName = commandLine.getArgs()[0];
+		String apiResponseString = getApiLine(baseURL + pokemonName);
 		String pokemonJSON = getPokemonJSON(apiResponseString);
 
 		// File Writing
 		boolean shouldWriteJSON = !commandLine.hasOption("no-output");
 		if (shouldWriteJSON) {
-			writeOutPokemonJSON(commandLine, pokemonJSON);
+			writeOutPokemonJSON(commandLine, pokemonJSON, pokemonName);
 		}
+
+		System.out.println(pokemonJSON);
 	}
 
-	private static void writeOutPokemonJSON(CommandLine commandLine, String json) {
+	private static void writeOutPokemonJSON(CommandLine commandLine, String json, String pokemonName) {
 		String outputPath;
-		String pokemonName = commandLine.getArgs()[0];
 		String customOutputPath = commandLine.getOptionValue("output-path");
 		String listToAppend = commandLine.getOptionValue("append-list");
 		File outputFile;
@@ -135,13 +137,10 @@ public class Main {
 		return options;
 	}
 
-	private static String getApiLine(CommandLine commandLine) {
-		// Will not get to this point unless commandLine.getArgs()[0] is not null
-		String pokemonName = commandLine.getArgs()[0];
-
+	public static String getApiLine(String urlString) {
 		String output = "";
 		try {
-			URL url = new URL(baseURL + pokemonName);
+			URL url = new URL(urlString);
 			URLConnection urlConnection = url.openConnection();
 			HttpURLConnection connection = (HttpURLConnection) urlConnection;
 			connection.setRequestMethod("GET");
