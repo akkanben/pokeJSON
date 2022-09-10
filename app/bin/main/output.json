@@ -1,0 +1,21 @@
+[
+  {
+    "name": "ditto",
+    "id": 132,
+    "weight": 40,
+    "abilities": [
+      {
+        "ability": {
+          "name": "limber",
+          "url": "https://pokeapi.co/api/v2/ability/7/"
+        }
+      },
+      {
+        "ability": {
+          "name": "imposter",
+          "url": "https://pokeapi.co/api/v2/ability/150/"
+        }
+      }
+    ]
+  }
+]

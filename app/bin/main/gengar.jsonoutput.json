@@ -1,0 +1,15 @@
+[
+  {
+    "name": "gengar",
+    "id": 94,
+    "weight": 405,
+    "abilities": [
+      {
+        "ability": {
+          "name": "cursed-body",
+          "url": "https://pokeapi.co/api/v2/ability/130/"
+        }
+      }
+    ]
+  }
+]
