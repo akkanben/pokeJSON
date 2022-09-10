@@ -7,4 +7,4 @@ build
 # Ignore generated .json files
 *.json
 
-bin
+app/bin
