@@ -13,8 +13,16 @@ public class PokeAPINamedAbility {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getUrl() {
+		return url;
 	}
 
 }

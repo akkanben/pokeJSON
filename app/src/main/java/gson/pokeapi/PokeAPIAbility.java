@@ -12,4 +12,8 @@ public class PokeAPIAbility {
 		this.ability = ability;
 	}
 
+	public PokeAPINamedAbility getAbility() {
+		return ability;
+	}
+
 }

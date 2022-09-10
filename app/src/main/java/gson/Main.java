@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.commons.cli.*;
 
 import gson.pokeapi.PokeAPIPokemon;
+import gson.Pokemon;
 
 public class Main {
 
@@ -57,17 +58,17 @@ public class Main {
 			try {
 				File list = new File(listToAppend);
 				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				List<PokeAPIPokemon> arrayList;
+				List<Pokemon> arrayList;
 				if (list.exists()) {
 					FileReader reader = new FileReader(list);
-					Type listType = new TypeToken<ArrayList<PokeAPIPokemon>>() {
+					Type listType = new TypeToken<ArrayList<Pokemon>>() {
 					}.getType();
 					arrayList = gson.fromJson(reader, listType);
 					reader.close();
 				} else {
 					arrayList = new ArrayList<>();
 				}
-				PokeAPIPokemon pokemonToAdd = gson.fromJson(json, PokeAPIPokemon.class);
+				Pokemon pokemonToAdd = gson.fromJson(json, Pokemon.class);
 				arrayList.add(pokemonToAdd);
 				json = gson.toJson(arrayList);
 			} catch (IOException ioe) {
@@ -91,7 +92,7 @@ public class Main {
 	private static String getPokemonJSON(String line) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		PokeAPIPokemon apiPokemon = gson.fromJson(line, PokeAPIPokemon.class);
-		return gson.toJson(apiPokemon);
+		return gson.toJson(new Pokemon(apiPokemon));
 	}
 
 	private static CommandLine getParsedCommandLine(Options options, String[] args) {
