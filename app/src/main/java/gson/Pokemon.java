@@ -10,6 +10,7 @@ import gson.pokeapi.PokeAPIAbility;
 import gson.pokeapi.PokeAPIAbilityDetail;
 import gson.pokeapi.PokeAPIEffectEntry;
 import gson.pokeapi.PokeAPIPokemon;
+import gson.pokeapi.PokeAPIType;
 
 public class Pokemon {
 
@@ -17,12 +18,14 @@ public class Pokemon {
 	private int id;
 	private int weight;
 	private ArrayList<Ability> abilities;
+	private ArrayList<String> types;
 
 	public Pokemon(int id, String name, int weight) {
 		this.id = id;
 		this.name = name;
 		this.weight = weight;
 		abilities = new ArrayList<>();
+		types = new ArrayList<>();
 	}
 
 	public Pokemon(PokeAPIPokemon apiPokemon) {
@@ -35,6 +38,10 @@ public class Pokemon {
 			String description = convertAbilityURLToDescription(apiAblity.getAbility().getUrl());
 			Ability ability = new Ability(name, description);
 			abilities.add(ability);
+		}
+		types = new ArrayList<>();
+		for (PokeAPIType type : apiPokemon.getTypes()) {
+			types.add(type.getType().getName());
 		}
 	}
 

@@ -94,6 +94,7 @@ public class Main {
 	private static String getPokemonJSON(String line) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		PokeAPIPokemon apiPokemon = gson.fromJson(line, PokeAPIPokemon.class);
+		System.out.println(apiPokemon);
 		return gson.toJson(new Pokemon(apiPokemon));
 	}
 

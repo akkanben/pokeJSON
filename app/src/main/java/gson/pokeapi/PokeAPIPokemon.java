@@ -6,6 +6,7 @@ public class PokeAPIPokemon {
 	private int id;
 	private int weight;
 	private PokeAPIAbility[] abilities;
+	private PokeAPIType[] types;
 
 	public PokeAPIPokemon() {
 		// empty
@@ -43,8 +44,12 @@ public class PokeAPIPokemon {
 		return abilities;
 	}
 
+	public PokeAPIType[] getTypes() {
+		return types;
+	}
+
 	public String toString() {
-		return "Id: " + id + ", Name: " + name;
+		return "Id: " + id + ", Name: " + name + ", Types: " + types;
 	}
 
 }
