@@ -4,13 +4,13 @@ The PokeJSON CLI Tool makes use of the [](https://pokeapi.co/) API. Queries can 
 
 Check releases for the latest version. Or build the project with using Gradle 7.5.1: `./gradlew build` and then look in the `app/build/distributions/` folder.
 
-
 ## Example Usage:
 
 ```bash
 user@computer:~/pokeJSON/bin$ ./pokeJSON --help
 usage: PokeJSON [OPTIONS] [NAME]
- -a,--append-list <arg>   Append to .json file or create new
+ -c,--collect <arg>       Collect current Pokemon and append to .json file
+                          or create new
  -h,--help                Show this menu
  -n,--no-output           Use to supress json write
  -o,--output-path <arg>   Alternate output path, default is current
@@ -44,3 +44,7 @@ user@computer:~/pokeJSON/bin$ ./pokeJSON pikachu
   - Allows the user to skip writing to disk via the --no-output option.
   - Allows the user to specify the output directory path.
   - Add option to append a .json file (or create new file) with the --append-list option. 
+
+- Version 0.0.2
+  - Adds types array to pokemon model.
+  - Renames 
