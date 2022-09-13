@@ -63,6 +63,26 @@ public class Pokemon {
 		abilities.add(ability);
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public ArrayList<Ability> getAbilities() {
+		return abilities;
+	}
+
+	public ArrayList<String> getTypes() {
+		return types;
+	}
+
 	public String toString() {
 		return "Id: " + id + ", Name: " + name;
 	}
