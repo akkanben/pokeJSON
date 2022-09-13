@@ -43,7 +43,7 @@ public class Main {
 	private static void writeOutPokemonJSON(CommandLine commandLine, String json, String pokemonName) {
 		String outputPath;
 		String customOutputPath = commandLine.getOptionValue("output-path");
-		String listToAppend = commandLine.getOptionValue("append-list");
+		String listToAppend = commandLine.getOptionValue("collect");
 		File outputFile;
 
 		if (customOutputPath == null) {
@@ -94,7 +94,6 @@ public class Main {
 	private static String getPokemonJSON(String line) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		PokeAPIPokemon apiPokemon = gson.fromJson(line, PokeAPIPokemon.class);
-		System.out.println(apiPokemon);
 		return gson.toJson(new Pokemon(apiPokemon));
 	}
 
@@ -131,7 +130,7 @@ public class Main {
 		supressOutput.setRequired(false);
 		options.addOption(supressOutput);
 
-		Option addToList = new Option("a", "append-list", true, "Append to .json file or create new");
+		Option addToList = new Option("c", "collect", true, "Collect current Pokemon and append to .json file or create new");
 		addToList.setRequired(false);
 		options.addOption(addToList);
 

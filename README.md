@@ -2,7 +2,7 @@
 
 The PokeJSON CLI Tool makes use of the [](https://pokeapi.co/) API. Queries can be made for Pokemon by name and are displayed in the console as well as saved to a local .json file. There is an option to append a given .json file to build up a list of PokeJSON objects. 
 
-Check releases for the latest version. Or build the project with using Gradle: `./gradlew build` and then look in the `app/build/distributions/` folder.
+Check releases for the latest version. Or build the project with using Gradle 7.5.1: `./gradlew build` and then look in the `app/build/distributions/` folder.
 
 
 ## Example Usage:
@@ -29,9 +29,11 @@ user@computer:~/pokeJSON/bin$ ./pokeJSON pikachu
       "name": "lightning-rod",
       "description": "All other Pokémon\u0027s single-target electric-type moves are redirected to this Pokémon if it is an eligible target.  Other Pokémon\u0027s Electric moves raise this Pokémon\u0027s Special Attack one stage, negating any other effect on it, and cannot miss it.\n\nIf the move\u0027s intended target also has this ability, the move is not redirected.  When multiple Pokémon with this ability are possible targets for redirection, the move is redirected to the one with the highest Speed stat, or, in the case of a tie, to a random tied Pokémon.  follow me takes precedence over this ability.\n\nIf the Pokémon is a ground-type and thus immune to Electric moves, its immunity prevents the Special Attack boost."
     }
+  ],
+  "types": [
+    "electric"
   ]
 }
-
 ```
 
 ## Updates
